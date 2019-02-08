@@ -12,26 +12,26 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser.json());
 
 //First POST route
-// app.post('/todos', (req, res)=>{
-//     var todo = new Todo({
-//         text: req.body.text,
-//     })
+app.post('/todos', (req, res)=>{
+    var todo = new Todo({
+        text: req.body.text,
+    })
 
-//     todo.save().then((doc)=>{
-//         res.send(doc);
-//     },(err)=>{
-//         res.status(400).send(err);
-//     })
-// });
+    todo.save().then((doc)=>{
+        res.send(doc);
+    },(err)=>{
+        res.status(400).send(err);
+    })
+});
 
 //Second GET route
-// app.get('/todos',(req, res)=>{
-//     Todo.find().then((todos)=>{
-//         res.send({todos});
-//     }, (err)=>{
-//         res.status(400).send(err);
-//     });
-// });
+app.get('/todos',(req, res)=>{
+    Todo.find().then((todos)=>{
+        res.send({todos});
+    }, (err)=>{
+        res.status(400).send(err);
+    });
+});
 
 //Third GET by ID route
 app.get('/todos/:id', (req, res)=>{
